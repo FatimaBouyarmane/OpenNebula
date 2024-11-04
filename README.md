@@ -53,52 +53,56 @@ This project implements the integration of OpenNebula with VMware vCenter, creat
 ## 🛠️ Installation
 
 ### Step 1: Deploy OVF Model
-Upload and configure OVF template in vCenter
-Set deployment parameters:
-Name: opennebula-vcenter
-Location: preferred_cluster
-Network: management_network
+  Upload and configure OVF template in vCenter
+  Set deployment parameters:
+  Name: opennebula-vcenter
+  Location: preferred_cluster
+  Network: management_network
 
 ### Step 2: Initial VM Configuration
 
 Update system packages
-sudo apt update && sudo apt upgrade -y
-Install required packages
-sudo apt install -y wget curl openssh-server
+
+    sudo apt update && sudo apt upgrade -y
+    Install required packages
+    sudo apt install -y wget curl openssh-server
 
 
 ### Step 3: Install OpenNebula
 
 Add OpenNebula repository
-sudo wget -q -O- https://downloads.opennebula.org/repo/repo.key | sudo apt-key add -
-sudo echo "deb https://downloads.opennebula.org/repo/6.4/Ubuntu/20.04 stable opennebula" > /etc/apt/sources.list.d/opennebula.list
-Install OpenNebula packages
-sudo apt update
-sudo apt install -y opennebula opennebula-sunstone
+
+    sudo wget -q -O- https://downloads.opennebula.org/repo/repo.key | sudo apt-key add -
+    sudo echo "deb https://downloads.opennebula.org/repo/6.4/Ubuntu/20.04 stable opennebula" > /etc/apt/sources.list.d/opennebula.list
+    Install OpenNebula packages
+    sudo apt update
+    sudo apt install -y opennebula opennebula-sunstone
+
 
 
 ## ⚙️ Configuration
 
 ### Step 1: Start Services
-Start OpenNebula services
-sudo systemctl start opennebula
-sudo systemctl start opennebula-sunstone
-Verify services status
-sudo systemctl status opennebula
-sudo systemctl status opennebula-sunstone
+    Start OpenNebula services
+    sudo systemctl start opennebula
+    sudo systemctl start opennebula-sunstone
+    Verify services status
+    sudo systemctl status opennebula
+    sudo systemctl status opennebula-sunstone
 
 
 ### Step 2: vCenter Plugin Setup
 Download vCenter plugin
-wget -P /tmp https://github.com/OpenNebula/addon-vcenter/releases/download/v5.12.0/vcenter.v5.12.0.tar.gz
-Install plugin
-sudo tar -xvf /tmp/vcenter.v5.12.0.tar.gz -C /
-Configure vCenter connection
-sudo nano /etc/one/vcenter_driver.default
 
-bash
-Restart OpenNebula
-sudo systemctl restart opennebula
+    wget -P /tmp https://github.com/OpenNebula/addon-vcenter/releases/download/v5.12.0/vcenter.v5.12.0.tar.gz
+    Install plugin
+    sudo tar -xvf /tmp/vcenter.v5.12.0.tar.gz -C /
+    Configure vCenter connection
+    sudo nano /etc/one/vcenter_driver.default
+
+
+    Restart OpenNebula
+    sudo systemctl restart opennebula
 
 
 
@@ -114,25 +118,6 @@ This integration provides:
 
 - [OpenNebula Docs](https://docs.opennebula.io)
 - [VMware vCenter Docs](https://docs.vmware.com/en/VMware-vSphere/index.html)
-- [Integration Guide](docs/integration-guide.md)
-
-## 🔧 Troubleshooting
-
-Common issues and solutions are documented in our [troubleshooting guide](docs/troubleshooting.md).
-
-## 🤝 Contributing
-
-1. Fork the repository
-2. Create your feature branch
-3. Commit your changes
-4. Push to the branch
-5. Create a Pull Request
-
-## 📞 Support
-
-- Create an Issue
-- Check [Documentation](docs/)
-- Contact: support@example.com
 
 ---
 
