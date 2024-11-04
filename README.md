@@ -1,5 +1,3 @@
-# OpenNebula
-
 # OpenNebula with VMware vCenter Integration 🚀
 
 <div align="center">
